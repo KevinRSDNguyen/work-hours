@@ -2,11 +2,14 @@ import React from "react";
 
 const Summary = ({ summaryData }) => {
   let summary = <p>Pease fill out the form for a summary</p>;
-  if (summaryData.workHours) {
+  const { stateSalesTax, hourlyWage, initialCost, workHours } = summaryData;
+
+  if (workHours) {
     summary = (
       <p>
-        It will take you {summaryData.workHours} hours to buy this at your
-        current wage
+        At an initial cost of ${initialCost}, and with an hourly wage of ${
+          hourlyWage
+        }. It will take you {workHours.toFixed(2)} hours to buy this item.
       </p>
     );
   }
