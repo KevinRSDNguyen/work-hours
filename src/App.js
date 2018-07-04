@@ -1,18 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import InputForm from "./containers/InputForm/InputForm";
+import Summary from "./components/Summary/Summary";
+import "./App.css";
 
 class App extends Component {
+  state = {
+    stateSalesTax: 0,
+    hourlyWage: null,
+    initialCost: null,
+    workHours: null
+  };
+  fetchData = ({ initialCost, hourlyWage }) => {
+    const workHours = initialCost / hourlyWage;
+    this.setState({ hourlyWage, initialCost, workHours });
+  };
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="container">
+        <h1>Welcome to the App</h1>
+        <InputForm fetchData={this.fetchData} />
+        <Summary summaryData={this.state} />
       </div>
     );
   }
