@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { states } from "./../../utility/stateLocalSalesTax";
 
 class InputForm extends Component {
   state = {
-    stateSalesTax: 0,
-    initialCost: null,
-    hourlyWage: null,
+    state: "None",
+    initialCost: "",
+    hourlyWage: "",
     error: ""
   };
   onSubmitHandler = e => {
@@ -15,9 +16,18 @@ class InputForm extends Component {
     this.setState({ error: "" });
     this.props.fetchData(this.state);
   };
-  onChange = e => {
+  onAmountChange = e => {
+    const amount = e.target.value;
+    if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
+      this.setState({ [e.target.name]: amount });
+    }
+    // this.setState({
+    //   [e.target.name]: +e.target.value
+    // });
+  };
+  onSelectChange = e => {
     this.setState({
-      [e.target.name]: +e.target.value
+      state: e.target.value
     });
   };
   render() {
@@ -26,21 +36,37 @@ class InputForm extends Component {
         <div className="form-group">
           <input
             className="form-control"
-            type="number"
+            type="text"
             placeholder="Enter in the initial cost of the product"
             name="initialCost"
-            onChange={this.onChange}
+            value={this.state.initialCost}
+            onChange={this.onAmountChange}
           />
         </div>
+
         <div className="form-group">
           <input
             className="form-control"
-            type="number"
+            type="text"
             placeholder="Enter how much you make per hour"
             name="hourlyWage"
-            onChange={this.onChange}
+            value={this.state.hourlyWage}
+            onChange={this.onAmountChange}
           />
         </div>
+
+        <div className="form-group">
+          <select className="custom-select" onChange={this.onSelectChange}>
+            {states.map(state => {
+              return (
+                <option key={state} value={state}>
+                  {state}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+
         {this.state.error && (
           <div className="alert alert-danger" role="alert">
             {this.state.error}

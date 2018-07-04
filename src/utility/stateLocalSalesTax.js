@@ -1,4 +1,5 @@
-export const stateSalesTax = {
+export const stateLocalSalesTax = {
+  None: [0, "0.00%"],
   Alabama: [0.091, "9.10%"],
   Alaska: [0.0176, "1.76%"],
   Arizona: [0.0833, "8.33%"],
@@ -51,3 +52,5 @@ export const stateSalesTax = {
   Wyoming: [0.0546, "5.46%"],
   DC: [0.0575, "5.75%"]
 };
+
+export const states = Object.keys(stateLocalSalesTax);
