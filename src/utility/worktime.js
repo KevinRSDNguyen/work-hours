@@ -2,7 +2,7 @@ export const workTime = hours => {
   if (hours < 8) {
     return {
       unit: "hours",
-      amount: hours,
+      amount: hours.toFixed(2),
       message: ``
     };
   }
@@ -17,7 +17,7 @@ export const workTime = hours => {
       } to afford your item!`
     };
   }
-  const workWeeks = Math.floor(hours / 40);
+  const workWeeks = Math.round(hours / 40);
   return {
     unit: "weeks",
     amount: workWeeks,
