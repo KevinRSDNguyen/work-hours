@@ -3,7 +3,8 @@ import { states } from "./../../utility/stateLocalSalesTax";
 
 class InputForm extends Component {
   state = {
-    state: "None",
+    state: "California",
+    customSalesTax: 0,
     initialCost: "",
     hourlyWage: "",
     error: ""
@@ -21,9 +22,12 @@ class InputForm extends Component {
     if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState({ [e.target.name]: amount });
     }
-    // this.setState({
-    //   [e.target.name]: +e.target.value
-    // });
+  };
+  onCustomSalesTaxChange = e => {
+    const amount = e.target.value;
+    if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
+      this.setState({ [e.target.name]: amount / 100 });
+    }
   };
   onSelectChange = e => {
     this.setState({
@@ -31,6 +35,23 @@ class InputForm extends Component {
     });
   };
   render() {
+    const customSalesTaxInput =
+      this.state.state === "Custom" ? (
+        <div className="form-group">
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Enter a custom sales tax."
+            name="customSalesTax"
+            value={this.state.customSalesTax}
+            onChange={this.onAmountChange}
+          />
+          <small className="form-text text-muted">
+            Enter your custom sales tax. Example: 8.75 for 8.75%
+          </small>
+        </div>
+      ) : null;
+
     return (
       <form onSubmit={this.onSubmitHandler}>
         <div className="form-group">
@@ -56,7 +77,11 @@ class InputForm extends Component {
         </div>
 
         <div className="form-group">
-          <select className="custom-select" onChange={this.onSelectChange}>
+          <select
+            className="custom-select"
+            onChange={this.onSelectChange}
+            value={this.state.state}
+          >
             {states.map(state => {
               return (
                 <option key={state} value={state}>
@@ -65,7 +90,13 @@ class InputForm extends Component {
               );
             })}
           </select>
+          <small className="form-text text-muted">
+            Select a State to find your State and Local Sales Tax. Or select
+            custom to input your own.
+          </small>
         </div>
+
+        {customSalesTaxInput}
 
         {this.state.error && (
           <div className="alert alert-danger" role="alert">
