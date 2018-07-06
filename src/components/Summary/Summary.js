@@ -3,7 +3,7 @@ import React from "react";
 import Aux from "./../../hoc/Auxx/Auxx";
 import CostSalesTax from "./CostSalesTax";
 import WageAndIncomeTax from "./WageAndIncomeTax";
-import WorkTimeSummary from "./worktimeSummary";
+import WorkTimeSummary from "./WorktimeSummary";
 
 const Summary = ({ summaryData }) => {
   const {

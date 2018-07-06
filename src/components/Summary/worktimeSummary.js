@@ -4,12 +4,12 @@ import Icons from "./Icons";
 import Aux from "./../../hoc/Auxx/Auxx";
 
 const WorkTimeSummary = ({ workHours }) => {
+  const unitToUse = workTime(workHours);
   let workImage = null;
   // If between 1 and 14 days to get the item
-  if (workHours < 8) {
-    workHours = Math.floor(workHours);
+  if (unitToUse.unit === "hours") {
     const arrOfIcons = [];
-    for (let i = 1; i <= workHours; i++) {
+    for (let i = 1; i <= unitToUse.amount; i++) {
       arrOfIcons.push(<Icons key={i} hours />);
     }
     workImage = (
@@ -18,16 +18,15 @@ const WorkTimeSummary = ({ workHours }) => {
           <div className="card text-center">
             <div className="card-body">
               <div>{arrOfIcons}</div>
-              <h1>{workHours} hours of work.</h1>
+              <h1>{unitToUse.amount.toFixed(2)} hours of work.</h1>
             </div>
           </div>
         </div>
       </div>
     );
-  } else if (workHours < 112 && workHours >= 8) {
-    const workDays = Math.floor(workHours / 8);
+  } else if (unitToUse.unit === "days") {
     const arrOfIcons = [];
-    for (let i = 1; i <= workDays; i++) {
+    for (let i = 1; i <= unitToUse.amount; i++) {
       arrOfIcons.push(<Icons key={i} days />);
     }
     workImage = (
@@ -36,7 +35,7 @@ const WorkTimeSummary = ({ workHours }) => {
           <div className="card text-center">
             <div className="card-body">
               <div>{arrOfIcons}</div>
-              <h1>{workDays} days of work.</h1>
+              <h1>{unitToUse.amount} days of work.</h1>
               <small className="form-text text-muted">
                 Assuming you work 8 hours a day
               </small>
@@ -45,10 +44,9 @@ const WorkTimeSummary = ({ workHours }) => {
         </div>
       </div>
     );
-  } else if (workHours >= 112) {
-    const workWeeks = Math.floor(workHours / 40);
+  } else if (unitToUse.unit === "weeks") {
     const arrOfIcons = [];
-    for (let i = 1; i <= workWeeks; i++) {
+    for (let i = 1; i <= unitToUse.amount; i++) {
       arrOfIcons.push(<Icons key={i} weeks />);
     }
     workImage = (
@@ -57,7 +55,7 @@ const WorkTimeSummary = ({ workHours }) => {
           <div className="card text-center">
             <div className="card-body">
               <div>{arrOfIcons}</div>
-              <h1>{workWeeks} weeks of work.</h1>
+              <h1>{unitToUse.amount} weeks of work.</h1>
               <small className="form-text text-muted">
                 Assuming you work 40 hours a week
               </small>
@@ -69,7 +67,7 @@ const WorkTimeSummary = ({ workHours }) => {
   }
   return (
     <Aux>
-      <p>{workTime(workHours)}</p>
+      <p>{unitToUse.message}</p>
       {workImage}
     </Aux>
   );
