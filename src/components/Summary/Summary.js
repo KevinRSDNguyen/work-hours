@@ -1,13 +1,9 @@
 import React from "react";
-import numeral from "numeral";
 
 import Aux from "./../../hoc/Auxx/Auxx";
 import CostSalesTax from "./CostSalesTax";
+import WageAndIncomeTax from "./WageAndIncomeTax";
 import WorkTimeSummary from "./worktimeSummary";
-
-const numerize = amount => {
-  return numeral(amount).format("0,0.00");
-};
 
 const Summary = ({ summaryData }) => {
   const {
@@ -25,16 +21,12 @@ const Summary = ({ summaryData }) => {
     summary = (
       <Aux>
         <CostSalesTax
-          initialCost={initialCost}
           state={state}
           stateSalesTax={stateSalesTax}
+          initialCost={initialCost}
           finalCost={finalCost}
         />
-        <p>
-          With an hourly wage of ${numerize(hourlyWage)}, it will take you{" "}
-          {numerize(workHours)} hours to buy this item.
-        </p>
-
+        <WageAndIncomeTax hourlyWage={hourlyWage} workHours={workHours} />
         <WorkTimeSummary workHours={workHours} />
       </Aux>
     );

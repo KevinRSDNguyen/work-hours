@@ -1,12 +1,7 @@
 import React from "react";
-import numeral from "numeral";
+import numerize from "./../../utility/numerize";
 
-//Add commas to our numbers
-const numerize = amount => {
-  return numeral(amount).format("0,0.00");
-};
-
-const CostSalesTax = ({ initialCost, state, stateSalesTax, finalCost }) => {
+const CostSalesTax = ({ state, stateSalesTax, initialCost, finalCost }) => {
   const stateSalesTaxSummary =
     state === "Custom"
       ? `You chose a custom sales tax rate of ${(stateSalesTax * 100).toFixed(
