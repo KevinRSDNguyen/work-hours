@@ -35,6 +35,14 @@ class InputForm extends Component {
     });
   };
   render() {
+    const selectOptions = states.map(state => {
+      return (
+        <option key={state} value={state}>
+          {state}
+        </option>
+      );
+    });
+
     const customSalesTaxInput =
       this.state.state === "Custom" ? (
         <div className="form-group">
@@ -82,13 +90,7 @@ class InputForm extends Component {
             onChange={this.onSelectChange}
             value={this.state.state}
           >
-            {states.map(state => {
-              return (
-                <option key={state} value={state}>
-                  {state}
-                </option>
-              );
-            })}
+            {selectOptions}
           </select>
           <small className="form-text text-muted">
             Select a State to find your State and Local Sales Tax. Or select

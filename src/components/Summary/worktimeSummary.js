@@ -37,6 +37,9 @@ const WorkTimeSummary = ({ workHours }) => {
             <div className="card-body">
               <div>{arrOfIcons}</div>
               <h1>{workDays} days of work.</h1>
+              <small className="form-text text-muted">
+                Assuming you work 8 hours a day
+              </small>
             </div>
           </div>
         </div>
@@ -55,6 +58,9 @@ const WorkTimeSummary = ({ workHours }) => {
             <div className="card-body">
               <div>{arrOfIcons}</div>
               <h1>{workWeeks} weeks of work.</h1>
+              <small className="form-text text-muted">
+                Assuming you work 40 hours a week
+              </small>
             </div>
           </div>
         </div>
