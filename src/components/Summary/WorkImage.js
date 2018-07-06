@@ -1,6 +1,6 @@
 import React from "react";
 
-const WorkImage = ({ arrOfIcons, unitToUse, smallText }) => {
+const WorkImage = ({ arrOfIcons, unitObj, smallText }) => {
   return (
     <div className="row">
       <div className="col-md-9 mx-auto">
@@ -8,7 +8,7 @@ const WorkImage = ({ arrOfIcons, unitToUse, smallText }) => {
           <div className="card-body">
             <div>{arrOfIcons}</div>
             <h1>
-              {unitToUse.amount} {unitToUse.unit} of work.
+              {unitObj.amount} {unitObj.unit} of work.
             </h1>
 
             {smallText && (

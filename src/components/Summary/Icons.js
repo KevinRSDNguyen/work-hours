@@ -1,12 +1,12 @@
 import React from "react";
 
-const Icons = ({ hours, days, weeks }) => {
+const Icons = ({ unit }) => {
   let iconsToReturn = null;
-  if (hours) {
+  if (unit === "hours") {
     iconsToReturn = <i className="far fa-clock fa-3x p-1" />;
-  } else if (days) {
+  } else if (unit === "days") {
     iconsToReturn = <i className="fas fa-sun fa-3x p-1" />;
-  } else if (weeks) {
+  } else if (unit === "weeks") {
     iconsToReturn = <i className="far fa-calendar-minus fa-2x p-1" />;
   }
   return iconsToReturn;
