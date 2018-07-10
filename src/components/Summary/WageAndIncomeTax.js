@@ -22,9 +22,9 @@ const WageAndIncomeTax = ({
   }
   return (
     <p>
-      {hourlyAndGrossSummary} At this gross income level, assuming you filed as
-      Single and in 2018, your effective Federal Income Tax Rate is{" "}
-      {(fedIncTax * 100).toFixed(2)}%.{" "}
+      {hourlyAndGrossSummary} At this gross income level, your effective Federal
+      Income Tax Rate is {(fedIncTax * 100).toFixed(2)}% (Assuming you filed
+      your taxes in 2018 and as Single).{" "}
       <span className="font-weight-bold font-italic">
         After Federal Income Taxes are deducted, you actually make ${numerize(
           hourlyWageFedIncTax

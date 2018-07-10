@@ -18,11 +18,6 @@ class InputForm extends Component {
   };
   onSubmitHandler = e => {
     e.preventDefault();
-    const invalid = isInvalid(this.state);
-    if (invalid) {
-      this.setState({ error: invalid });
-      return;
-    }
     this.setState(
       prevState => {
         return {
@@ -36,6 +31,11 @@ class InputForm extends Component {
         };
       },
       () => {
+        const invalid = isInvalid(this.state);
+        if (invalid) {
+          this.setState({ error: invalid });
+          return;
+        }
         this.props.fetchData(this.state);
       }
     );

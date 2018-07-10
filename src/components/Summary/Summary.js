@@ -18,7 +18,11 @@ const Summary = ({ summaryData }) => {
     finalCost
   } = summaryData;
 
-  let summary;
+  let summary = (
+    <p className="text-center py-5">
+      Please fill out the form to get your work hours summary
+    </p>
+  );
 
   if (workHours) {
     summary = (
