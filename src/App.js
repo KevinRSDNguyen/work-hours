@@ -53,7 +53,11 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <InputForm fetchData={this.fetchData} />
+        <div className="row">
+          <div className="col-md-9 mx-auto">
+            <InputForm fetchData={this.fetchData} />
+          </div>
+        </div>
         <Summary summaryData={this.state} />
       </div>
     );

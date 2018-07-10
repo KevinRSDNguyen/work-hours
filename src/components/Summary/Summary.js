@@ -19,7 +19,7 @@ const Summary = ({ summaryData }) => {
     finalCost
   } = summaryData;
 
-  let summary = <p>Pease fill out the form for a summary</p>;
+  let summary;
 
   if (workHours) {
     summary = (

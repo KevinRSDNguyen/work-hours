@@ -91,7 +91,13 @@ class InputForm extends Component {
 
     return (
       <form onSubmit={this.onSubmitHandler}>
-        <div className="form-group">
+        <div className="form-group input-group">
+          <div className="input-group-prepend">
+            <span className="input-group-text">
+              <i className="fas fa-dollar-sign" />
+            </span>
+          </div>
+
           <input
             className="form-control"
             type="text"
@@ -103,7 +109,23 @@ class InputForm extends Component {
         </div>
 
         <div className="form-row">
-          <div className="form-group col-md-10">
+          <div className="form-group col-md-4">
+            <select
+              className="custom-select"
+              onChange={this.onHourlyOrSalarySelectChange}
+              value={this.state.selectedHourly}
+              name="selectedHourly"
+            >
+              <option value={false}>Yearly Salary</option>
+              <option value={true}>Hourly Wage</option>
+            </select>
+          </div>
+          <div className="form-group input-group col-md-8">
+            <div className="input-group-prepend">
+              <span className="input-group-text">
+                <i className="fas fa-hand-holding-usd" />
+              </span>
+            </div>
             <input
               className="form-control"
               type="text"
@@ -121,33 +143,28 @@ class InputForm extends Component {
               onChange={this.onAmountChange}
             />
           </div>
-          <div className="form-group col-md-2">
-            <select
-              className="custom-select"
-              onChange={this.onHourlyOrSalarySelectChange}
-              value={this.state.selectedHourly}
-              name="selectedHourly"
-            >
-              <option value={false}>Salary</option>
-              <option value={true}>Hourly Wage</option>
-            </select>
-          </div>
         </div>
 
-        <div className="form-group">
+        <div className="input-group">
+          <div className="input-group-prepend">
+            <label className="input-group-text" htmlFor="stateSelect">
+              <i class="fas fa-map-marker-alt" />
+            </label>
+          </div>
           <select
-            className="custom-select"
+            className="custom-select mb-0"
+            id="stateSelect"
             onChange={this.onSelectChange}
             name="state"
             value={this.state.state}
           >
             {selectOptions}
           </select>
-          <small className="form-text text-muted">
-            Select a State to find your State and Local Sales Tax. Or select
-            custom to input your own.
-          </small>
         </div>
+        <small className="form-text text-muted mb-3">
+          Select a State to find your State and Local Sales Tax. Or select
+          custom to input your own.
+        </small>
 
         {customSalesTaxInput}
 
