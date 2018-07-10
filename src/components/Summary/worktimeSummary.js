@@ -15,9 +15,9 @@ const WorkTimeSummary = ({ workHours }) => {
   }
 
   let smallText = "";
-  if (unit === "days") {
+  if (unit === "day(s)") {
     smallText = "Assuming you work 8 hours a day";
-  } else if (unit === "weeks") {
+  } else if (unit === "week(s)") {
     smallText = "Assuming you work 40 hours a week";
   }
   return (

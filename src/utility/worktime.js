@@ -1,15 +1,15 @@
 export const workTime = hours => {
   if (hours < 8) {
     return {
-      unit: "hours",
+      unit: "hour(s)",
       amount: hours.toFixed(2),
       message: ``
     };
   }
   const workDays = Math.floor(hours / 8);
-  if (workDays < 14) {
+  if (workDays < 7) {
     return {
-      unit: "days",
+      unit: "day(s)",
       amount: workDays,
       message: `This would be the equivalent of working about ${workDays} 
       standard eight-hour work day${
@@ -19,10 +19,10 @@ export const workTime = hours => {
   }
   const workWeeks = Math.round(hours / 40);
   return {
-    unit: "weeks",
+    unit: "week(s)",
     amount: workWeeks,
     message: `This would be the equivalent of working about ${workWeeks} 
-    standard Forty-hour workweek${
+    standard forty-hour work week${
       workWeeks > 1 ? "s" : ""
     } to afford your item!`
   };
