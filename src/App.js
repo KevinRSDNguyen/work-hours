@@ -4,7 +4,7 @@ import Summary from "./components/Summary/Summary";
 import "./App.css";
 
 import { stateLocalSalesTax } from "./utility/stateLocalSalesTax";
-import { hourlyWageAfterIncTax } from "./utility/salaryIncomeTax";
+import { effectiveFedIncTax } from "./utility/salaryIncomeTax";
 
 class App extends Component {
   state = {
@@ -13,6 +13,7 @@ class App extends Component {
     selectedHourly: true, //If set to false then user input their salary
     hourlyWage: null,
     hourlyWageFedIncTax: null,
+    fedIncTax: null,
     initialCost: null,
     finalCost: null,
     workHours: null
@@ -32,17 +33,19 @@ class App extends Component {
     } else {
       stateSalesTax = stateLocalSalesTax[state];
     }
-    const hourlyWageFedIncTax = hourlyWageAfterIncTax(hourlyWage);
+    const fedIncTax = effectiveFedIncTax(salary);
     const finalCost = initialCost * (1 + stateSalesTax);
+    const hourlyWageFedIncTax = hourlyWage * (1 - fedIncTax);
     const workHours = finalCost / hourlyWageFedIncTax;
     this.setState({
       selectedHourly,
       salary,
       hourlyWage,
+      hourlyWageFedIncTax,
       initialCost,
       state,
       stateSalesTax,
-      hourlyWageFedIncTax,
+      fedIncTax,
       finalCost,
       workHours
     });

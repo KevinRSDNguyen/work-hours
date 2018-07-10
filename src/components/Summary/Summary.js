@@ -12,6 +12,7 @@ const Summary = ({ summaryData }) => {
     stateSalesTax,
     hourlyWage,
     hourlyWageFedIncTax,
+    fedIncTax,
     initialCost,
     workHours,
     state,
@@ -32,6 +33,7 @@ const Summary = ({ summaryData }) => {
         <WageAndIncomeTax
           hourlyWage={hourlyWage}
           hourlyWageFedIncTax={hourlyWageFedIncTax}
+          fedIncTax={fedIncTax}
           workHours={workHours}
           selectedHourly={selectedHourly}
           salary={salary}
