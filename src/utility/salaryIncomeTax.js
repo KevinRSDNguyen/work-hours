@@ -25,5 +25,5 @@ export const effectiveFedIncTax = grossIncome => {
 export const hourlyWageAfterIncTax = hourly => {
   const grossIncome = hourlyToSalary(hourly);
   const fedIncTaxRate = effectiveFedIncTax(grossIncome);
-  return (hourly * (1 - fedIncTaxRate)).toFixed(2);
+  return hourly * (1 - fedIncTaxRate);
 };

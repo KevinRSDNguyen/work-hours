@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { states } from "./../../utility/stateLocalSalesTax";
+import { salaryToHourly } from "./../../utility/salaryIncomeTax";
+import isInvalid from "./../../utility/isInvalid";
 
 class InputForm extends Component {
   state = {
@@ -7,15 +9,30 @@ class InputForm extends Component {
     customSalesTax: 0,
     initialCost: "",
     hourlyWage: "",
+    salary: "",
+    selectedHourly: true, //If set to false then user input their salary
     error: ""
   };
   onSubmitHandler = e => {
     e.preventDefault();
-    if (!this.state.initialCost || !this.state.hourlyWage) {
-      return this.setState({ error: "All fields must be filled out" });
+    const invalid = isInvalid(this.state);
+    if (invalid) {
+      this.setState({ error: invalid });
+      return;
     }
-    this.setState({ error: "" });
-    this.props.fetchData(this.state);
+    this.setState(
+      prevState => {
+        return {
+          error: "",
+          hourlyWage: prevState.selectedHourly
+            ? prevState.hourlyWage
+            : salaryToHourly(this.state.salary)
+        };
+      },
+      () => {
+        this.props.fetchData(this.state);
+      }
+    );
   };
   onAmountChange = e => {
     const amount = e.target.value;
@@ -31,7 +48,13 @@ class InputForm extends Component {
   };
   onSelectChange = e => {
     this.setState({
-      state: e.target.value
+      [e.target.name]: e.target.value
+    });
+  };
+  onHourlyOrSalarySelectChange = e => {
+    const bool = e.target.value === "true" ? true : false;
+    this.setState({
+      [e.target.name]: bool
     });
   };
   render() {
@@ -73,21 +96,43 @@ class InputForm extends Component {
           />
         </div>
 
-        <div className="form-group">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Enter how much you make per hour"
-            name="hourlyWage"
-            value={this.state.hourlyWage}
-            onChange={this.onAmountChange}
-          />
+        <div className="form-row">
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="text"
+              placeholder={
+                this.state.selectedHourly
+                  ? "Enter how much you make per hour"
+                  : "Enter your yearly salary"
+              }
+              name={this.state.selectedHourly ? "hourlyWage" : "salary"}
+              value={
+                this.state.selectedHourly
+                  ? this.state.hourlyWage
+                  : this.state.salary
+              }
+              onChange={this.onAmountChange}
+            />
+          </div>
+          <div className="form-group">
+            <select
+              className="custom-select"
+              onChange={this.onHourlyOrSalarySelectChange}
+              value={this.state.selectedHourly}
+              name="selectedHourly"
+            >
+              <option value={false}>Salary</option>
+              <option value={true}>Hourly Wage</option>
+            </select>
+          </div>
         </div>
 
         <div className="form-group">
           <select
             className="custom-select"
             onChange={this.onSelectChange}
+            name="state"
             value={this.state.state}
           >
             {selectOptions}
