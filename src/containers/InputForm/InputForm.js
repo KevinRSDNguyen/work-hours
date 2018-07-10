@@ -101,7 +101,7 @@ class InputForm extends Component {
           <input
             className="form-control"
             type="text"
-            placeholder="Enter in the initial cost of the product"
+            placeholder="Enter in cost of item"
             name="initialCost"
             value={this.state.initialCost}
             onChange={this.onAmountChange}
@@ -131,7 +131,7 @@ class InputForm extends Component {
               type="text"
               placeholder={
                 this.state.selectedHourly
-                  ? "Enter how much you make per hour"
+                  ? "Enter your hourly wage"
                   : "Enter your yearly salary"
               }
               name={this.state.selectedHourly ? "hourlyWage" : "salary"}

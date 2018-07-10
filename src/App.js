@@ -53,6 +53,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <h1 className="text-center">Work Hours App</h1>
         <div className="row">
           <div className="col-md-9 mx-auto">
             <InputForm fetchData={this.fetchData} />
