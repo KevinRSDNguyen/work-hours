@@ -103,7 +103,7 @@ class InputForm extends Component {
         </div>
 
         <div className="form-row">
-          <div className="form-group">
+          <div className="form-group col-md-10">
             <input
               className="form-control"
               type="text"
@@ -121,7 +121,7 @@ class InputForm extends Component {
               onChange={this.onAmountChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group col-md-2">
             <select
               className="custom-select"
               onChange={this.onHourlyOrSalarySelectChange}

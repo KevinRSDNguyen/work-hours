@@ -53,7 +53,6 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Welcome to the App</h1>
         <InputForm fetchData={this.fetchData} />
         <Summary summaryData={this.state} />
       </div>
