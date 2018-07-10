@@ -1,6 +1,5 @@
 import React from "react";
 
-import Aux from "./../../hoc/Auxx/Auxx";
 import CostSalesTax from "./CostSalesTax";
 import WageAndIncomeTax from "./WageAndIncomeTax";
 import WorkTimeSummary from "./WorktimeSummary";
@@ -23,7 +22,7 @@ const Summary = ({ summaryData }) => {
 
   if (workHours) {
     summary = (
-      <Aux>
+      <div className="my-3">
         <CostSalesTax
           state={state}
           stateSalesTax={stateSalesTax}
@@ -39,7 +38,7 @@ const Summary = ({ summaryData }) => {
           salary={salary}
         />
         <WorkTimeSummary workHours={workHours} />
-      </Aux>
+      </div>
     );
   }
   return <div>{summary}</div>;

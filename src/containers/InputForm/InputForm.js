@@ -148,7 +148,7 @@ class InputForm extends Component {
         <div className="input-group">
           <div className="input-group-prepend">
             <label className="input-group-text" htmlFor="stateSelect">
-              <i class="fas fa-map-marker-alt" />
+              <i className="fas fa-map-marker-alt" />
             </label>
           </div>
           <select

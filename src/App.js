@@ -56,9 +56,9 @@ class App extends Component {
         <div className="row">
           <div className="col-md-9 mx-auto">
             <InputForm fetchData={this.fetchData} />
+            <Summary summaryData={this.state} />
           </div>
         </div>
-        <Summary summaryData={this.state} />
       </div>
     );
   }

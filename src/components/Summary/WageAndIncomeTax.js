@@ -5,7 +5,6 @@ const WageAndIncomeTax = ({
   hourlyWage,
   hourlyWageFedIncTax,
   fedIncTax,
-  workHours,
   selectedHourly,
   salary
 }) => {
@@ -25,11 +24,13 @@ const WageAndIncomeTax = ({
     <p>
       {hourlyAndGrossSummary} At this gross income level, assuming you filed as
       Single and in 2018, your effective Federal Income Tax Rate is{" "}
-      {(fedIncTax * 100).toFixed(2)}%. Thus you really only make ${numerize(
-        hourlyWageFedIncTax
-      )}{" "}
-      an hour after income taxes are deducted. It will take you{" "}
-      {numerize(workHours)} hours to buy this item.
+      {(fedIncTax * 100).toFixed(2)}%.{" "}
+      <span className="font-weight-bold font-italic">
+        After Federal Income Taxes are deducted, you actually make ${numerize(
+          hourlyWageFedIncTax
+        )}{" "}
+        an hour.
+      </span>
     </p>
   );
 };

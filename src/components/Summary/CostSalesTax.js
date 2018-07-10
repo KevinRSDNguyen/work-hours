@@ -14,8 +14,10 @@ const CostSalesTax = ({ state, stateSalesTax, initialCost, finalCost }) => {
   return (
     <p>
       Your item has an initial cost of ${numerize(initialCost)}.{" "}
-      {stateSalesTaxSummary} Therefore after sales tax is added your item now
-      costs ${numerize(finalCost)}.
+      {stateSalesTaxSummary} After sales tax is added your item has a{" "}
+      <span className="font-weight-bold text-capitalize font-italic">
+        final cost of ${numerize(finalCost)}
+      </span>.
     </p>
   );
 };

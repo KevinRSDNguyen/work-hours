@@ -1,5 +1,6 @@
 import React from "react";
 import { workTime } from "./../../utility/worktime";
+import numerize from "./../../utility/numerize";
 
 import Aux from "./../../hoc/Auxx/Auxx";
 import Icons from "./Icons";
@@ -21,7 +22,13 @@ const WorkTimeSummary = ({ workHours }) => {
   }
   return (
     <Aux>
-      <p>{unitObj.message}</p>
+      <p>
+        It will take you{" "}
+        <span className="font-weight-bold font-italic">
+          {numerize(workHours)} hours
+        </span>{" "}
+        to buy this item. {unitObj.message}
+      </p>
       <WorkImage
         arrOfIcons={arrOfIcons}
         unitObj={unitObj}
