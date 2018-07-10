@@ -7,6 +7,8 @@ import WorkTimeSummary from "./WorktimeSummary";
 
 const Summary = ({ summaryData }) => {
   const {
+    selectedHourly,
+    salary,
     stateSalesTax,
     hourlyWage,
     hourlyWageFedIncTax,
@@ -31,6 +33,8 @@ const Summary = ({ summaryData }) => {
           hourlyWage={hourlyWage}
           hourlyWageFedIncTax={hourlyWageFedIncTax}
           workHours={workHours}
+          selectedHourly={selectedHourly}
+          salary={salary}
         />
         <WorkTimeSummary workHours={workHours} />
       </Aux>

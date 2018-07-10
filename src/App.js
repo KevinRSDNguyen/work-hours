@@ -17,7 +17,15 @@ class App extends Component {
     finalCost: null,
     workHours: null
   };
-  fetchData = ({ hourlyWage, initialCost, state, customSalesTax }) => {
+  fetchData = data => {
+    const {
+      selectedHourly,
+      salary,
+      hourlyWage,
+      initialCost,
+      state,
+      customSalesTax
+    } = data;
     let stateSalesTax;
     if (state === "Custom") {
       stateSalesTax = customSalesTax / 100;
@@ -28,6 +36,8 @@ class App extends Component {
     const finalCost = initialCost * (1 + stateSalesTax);
     const workHours = finalCost / hourlyWageFedIncTax;
     this.setState({
+      selectedHourly,
+      salary,
       hourlyWage,
       initialCost,
       state,

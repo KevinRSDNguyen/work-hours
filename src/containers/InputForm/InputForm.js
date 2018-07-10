@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { states } from "./../../utility/stateLocalSalesTax";
-import { salaryToHourly } from "./../../utility/salaryIncomeTax";
+import {
+  salaryToHourly,
+  hourlyToSalary
+} from "./../../utility/salaryIncomeTax";
 import isInvalid from "./../../utility/isInvalid";
 
 class InputForm extends Component {
@@ -26,7 +29,10 @@ class InputForm extends Component {
           error: "",
           hourlyWage: prevState.selectedHourly
             ? prevState.hourlyWage
-            : salaryToHourly(this.state.salary)
+            : salaryToHourly(prevState.salary),
+          salary: prevState.selectedHourly
+            ? hourlyToSalary(prevState.hourlyWage)
+            : prevState.salary
         };
       },
       () => {
