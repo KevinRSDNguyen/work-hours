@@ -6,7 +6,7 @@ export const workTime = hours => {
       message: ``
     };
   }
-  const workDays = Math.floor(hours / 8);
+  const workDays = Math.round(hours / 8);
   if (workDays < 7) {
     return {
       unit: "day(s)",

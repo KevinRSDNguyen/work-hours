@@ -17,35 +17,25 @@ const Summary = ({ summaryData }) => {
     state,
     finalCost
   } = summaryData;
-
-  let summary = (
-    <p className="text-center py-5">
-      Please fill out the form to get your work hours summary
-    </p>
+  return (
+    <div className="my-3">
+      <CostSalesTax
+        state={state}
+        stateSalesTax={stateSalesTax}
+        initialCost={initialCost}
+        finalCost={finalCost}
+      />
+      <WageAndIncomeTax
+        hourlyWage={hourlyWage}
+        hourlyWageFedIncTax={hourlyWageFedIncTax}
+        fedIncTax={fedIncTax}
+        workHours={workHours}
+        selectedHourly={selectedHourly}
+        salary={salary}
+      />
+      <WorkTimeSummary workHours={workHours} />
+    </div>
   );
-
-  if (workHours) {
-    summary = (
-      <div className="my-3">
-        <CostSalesTax
-          state={state}
-          stateSalesTax={stateSalesTax}
-          initialCost={initialCost}
-          finalCost={finalCost}
-        />
-        <WageAndIncomeTax
-          hourlyWage={hourlyWage}
-          hourlyWageFedIncTax={hourlyWageFedIncTax}
-          fedIncTax={fedIncTax}
-          workHours={workHours}
-          selectedHourly={selectedHourly}
-          salary={salary}
-        />
-        <WorkTimeSummary workHours={workHours} />
-      </div>
-    );
-  }
-  return <div>{summary}</div>;
 };
 
 export default Summary;

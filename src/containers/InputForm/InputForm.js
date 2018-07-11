@@ -173,7 +173,11 @@ class InputForm extends Component {
             {this.state.error}
           </div>
         )}
-        <input type="submit" value="Submit" className="btn btn-info mt-2" />
+        <input
+          type="submit"
+          value="Submit"
+          className="btn btn-info w-50 btn-block mx-auto"
+        />
       </form>
     );
   }

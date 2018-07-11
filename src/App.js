@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import InputForm from "./containers/InputForm/InputForm";
+import About from "./components/About/About";
 import Summary from "./components/Summary/Summary";
 import "./App.css";
 
@@ -57,7 +58,12 @@ class App extends Component {
         <div className="row">
           <div className="col-md-9 mx-auto">
             <InputForm fetchData={this.fetchData} />
-            <Summary summaryData={this.state} />
+
+            {this.state.workHours ? (
+              <Summary summaryData={this.state} />
+            ) : (
+              <About />
+            )}
           </div>
         </div>
       </div>
