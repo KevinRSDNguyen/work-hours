@@ -8,18 +8,20 @@ import WorkImage from "./WorkImage";
 
 const WorkTimeSummary = ({ workHours }) => {
   const unitObj = workTime(workHours);
-  const unit = unitObj.unit;
+  const { unit, amount } = unitObj;
   const arrOfIcons = [];
-  for (let i = 1; i <= unitObj.amount; i++) {
-    arrOfIcons.push(<Icons key={i} unit={unit} />);
+
+  if (amount < 5000) {
+    for (let i = 1; i <= amount; i++) {
+      arrOfIcons.push(<Icons key={i} unit={unit} />);
+    }
   }
 
-  let smallText = "";
-  if (unit === "day(s)") {
-    smallText = "Assuming you work 8 hours a day";
-  } else if (unit === "week(s)") {
-    smallText = "Assuming you work 40 hours a week";
-  }
+  let smallText =
+    unit === "day(s)"
+      ? "Assuming you work 8 hours a day"
+      : "Assuming you work 40 hours a week";
+
   return (
     <Aux>
       <p>
