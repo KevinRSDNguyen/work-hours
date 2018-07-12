@@ -83,7 +83,7 @@ class InputForm extends Component {
             value={this.state.customSalesTax}
             onChange={this.onAmountChange}
           />
-          <small className="form-text text-muted">
+          <small className="form-text text-grey">
             Enter your custom sales tax. Example: 8.75 for 8.75%
           </small>
         </div>
@@ -161,7 +161,7 @@ class InputForm extends Component {
             {selectOptions}
           </select>
         </div>
-        <small className="form-text text-muted mb-3">
+        <small className="form-text text-grey mb-3">
           Select a State to find your State and Local Sales Tax. Or select
           custom to input your own.
         </small>

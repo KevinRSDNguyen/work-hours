@@ -2,7 +2,7 @@ import React from "react";
 
 const WorkImage = ({ arrOfIcons, unitObj, smallText }) => {
   return (
-    <div className="card text-center">
+    <div className="card text-center text-dark">
       <div className="card-body">
         <h1>
           {unitObj.amount} {unitObj.unit} of work.

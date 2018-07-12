@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Aux from "./hoc/Auxx/Auxx";
 import InputForm from "./containers/InputForm/InputForm";
 import About from "./components/About/About";
 import Summary from "./components/Summary/Summary";
@@ -53,20 +54,23 @@ class App extends Component {
   };
   render() {
     return (
-      <div className="container">
-        <h1 className="text-center">Work Hours App</h1>
-        <div className="row">
-          <div className="col-md-9 mx-auto">
-            <InputForm fetchData={this.fetchData} />
+      <Aux>
+        <div className="dark-overlay" />
+        <div className="container text-white">
+          <h1 className="text-center">Work Hours App</h1>
+          <div className="row">
+            <div className="col-md-9 mx-auto">
+              <InputForm fetchData={this.fetchData} />
 
-            {this.state.workHours ? (
-              <Summary summaryData={this.state} />
-            ) : (
-              <About />
-            )}
+              {this.state.workHours ? (
+                <Summary summaryData={this.state} />
+              ) : (
+                <About />
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </Aux>
     );
   }
 }

@@ -12,7 +12,7 @@ const About = () => {
       <p>
         This app allows you to enter your hourly wage or yearly salary. Sales
         and Federal Income Taxes are automatically calculated. A helpful visual
-        is also provided to better understand you would need to work.
+        is also provided to better understand how long you would need to work.
       </p>
       <p>
         Calculations for average state and local sales tax can be seen{" "}
