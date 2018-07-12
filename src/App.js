@@ -57,7 +57,7 @@ class App extends Component {
       <Aux>
         <div className="dark-overlay" />
         <div className="container text-white">
-          <h1 className="text-center">Work Hours App</h1>
+          <h1 className="text-center my-2">Work Hours App</h1>
           <div className="row">
             <div className="col-md-9 mx-auto">
               <InputForm fetchData={this.fetchData} />

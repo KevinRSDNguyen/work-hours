@@ -6,8 +6,8 @@ const About = () => {
       <p>
         You invest your time at work to recieve money, so as the cliche goes
         "Time is money". This is how I have always viewed purchasing goods, such
-        as the relization that for me to spend $20 on a 2 hour IMAX movie would
-        cost me the same amount of time at my retail job.
+        as realzing that spending $20 on a 2 hour IMAX movie would cost me the
+        same amount of time at my retail job.
       </p>
       <p>
         This app allows you to enter your hourly wage or yearly salary. Sales
