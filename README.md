@@ -1,4 +1,4 @@
-# jwiki
+# Work Hours
 
 ![React-16.4+](https://img.shields.io/badge/React-16.4%2B-blue.svg)
 ![Bootstrap-4.1.0+](https://img.shields.io/badge/Bootstrap-4.1.0%2B-purple.svg)
